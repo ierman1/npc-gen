@@ -1,0 +1,359 @@
+:root {
+    color-scheme: dark;
+    font-family: "Segoe UI", sans-serif;
+    color: #f4efe5;
+    background: #111513;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    --surface: #1b211e;
+    --surface-raised: #222a25;
+    --border: #38443b;
+    --muted: #a8b1a7;
+    --accent: #c5a46d;
+    --accent-light: #e4c995;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+    background:
+        radial-gradient(ellipse at 50% -20%, rgb(107 124 87 / 20%), transparent 55%),
+        #111513;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+.app-shell {
+    width: min(100% - 40px, 980px);
+    margin: 0 auto;
+    padding: 72px 0 32px;
+}
+
+.page-header {
+    margin-bottom: 38px;
+    text-align: center;
+}
+
+.eyebrow {
+    margin: 0 0 10px;
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin-top: 0;
+}
+
+h1,
+h2,
+.npc-card h3 {
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+h1 {
+    margin-bottom: 12px;
+    font-size: clamp(2.8rem, 8vw, 4.8rem);
+    font-weight: 600;
+    letter-spacing: -0.045em;
+    line-height: 1;
+}
+
+.intro {
+    margin: 0;
+    color: var(--muted);
+    font-size: 1.05rem;
+}
+
+.generator-panel {
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: linear-gradient(145deg, rgb(34 42 37 / 96%), rgb(25 31 28 / 96%));
+    box-shadow: 0 18px 50px rgb(0 0 0 / 20%);
+}
+
+.panel-heading,
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h2 {
+    margin-bottom: 0;
+    font-size: 1.65rem;
+    font-weight: 500;
+}
+
+.gender-toggle {
+    display: flex;
+    width: fit-content;
+    gap: 4px;
+    margin: 0 auto 24px;
+    padding: 4px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: #141916;
+}
+
+.species-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+.species-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 14px 8px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface-raised);
+    color: #f4efe5;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.species-button small {
+    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 500;
+}
+
+.species-button:hover {
+    transform: translateY(-1px);
+    border-color: var(--accent);
+    background: rgb(197 164 109 / 10%);
+}
+
+.species-button:focus-visible {
+    outline: 3px solid var(--accent-light);
+    outline-offset: 3px;
+}
+
+.gender-option {
+    position: relative;
+    cursor: pointer;
+}
+
+.gender-option input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.gender-option span {
+    display: block;
+    min-width: 110px;
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    color: var(--muted);
+    text-align: center;
+    transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.gender-option input:checked + span {
+    border-color: var(--accent);
+    background: rgb(197 164 109 / 12%);
+    color: var(--accent-light);
+}
+
+.gender-option input:focus-visible + span,
+.button:focus-visible {
+    outline: 3px solid var(--accent-light);
+    outline-offset: 3px;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.button {
+    min-height: 48px;
+    padding: 0 20px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.button:hover {
+    transform: translateY(-1px);
+}
+
+.button-primary {
+    background: var(--accent);
+    color: #171711;
+}
+
+.button-primary:hover {
+    background: var(--accent-light);
+}
+
+.button-secondary {
+    border-color: var(--border);
+    background: transparent;
+    color: #f4efe5;
+}
+
+.button-secondary:hover {
+    border-color: var(--accent);
+    background: rgb(197 164 109 / 8%);
+}
+
+.status-message {
+    margin: 16px 0 0;
+    color: #ffaaa0;
+}
+
+.results-section {
+    margin-top: 42px;
+}
+
+.section-heading {
+    margin-bottom: 18px;
+}
+
+.results-section[hidden] {
+    display: none;
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.npc-card {
+    min-width: 0;
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+    animation: reveal 300ms ease both;
+}
+
+.npc-card h3 {
+    margin-bottom: 5px;
+    overflow-wrap: anywhere;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.npc-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.featured-card {
+    padding: 26px;
+    border-color: rgb(197 164 109 / 55%);
+    background:
+        radial-gradient(circle at 100% 0%, rgb(197 164 109 / 12%), transparent 48%),
+        var(--surface);
+}
+
+.featured-card h3 {
+    font-size: 2rem;
+}
+
+.page-footer {
+    margin-top: 52px;
+    color: #768078;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+}
+
+@keyframes reveal {
+    from {
+        transform: translateY(5px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 760px) {
+    .species-buttons,
+    .results-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 560px) {
+    .app-shell {
+        width: min(100% - 28px, 480px);
+        padding-top: 48px;
+    }
+
+    .generator-panel {
+        padding: 22px 18px;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    .button {
+        width: 100%;
+    }
+
+    .species-buttons,
+    .results-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
+    }
+
+    .npc-card {
+        padding: 14px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
